@@ -2,6 +2,7 @@ import React from 'react';
 import HomeSlider from '../components/HomeSlider';
 import { useLoaderData } from 'react-router';
 import Featured from '../components/Featured';
+import TopArtist from '../components/TopArtist';
 
 const Home = () => {
     const data = useLoaderData()
@@ -10,6 +11,7 @@ const Home = () => {
         <div>
             <HomeSlider></HomeSlider>
             <Featured data={data}></Featured>
+            <TopArtist></TopArtist>
         </div>
     );
 };

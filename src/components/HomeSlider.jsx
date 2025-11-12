@@ -60,7 +60,7 @@ const HomeSlider = () => {
                 autoPlay={true}
                 showPlayButton={false}
                 showFullscreenButton={false}
-                slideInterval={4000}
+                slideInterval={5000}
                 showThumbnails={false}
                 showBullets={true}
                 infinite={true}
