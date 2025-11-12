@@ -12,7 +12,7 @@ const ArtworkDetails = () => {
         try {
             // Send a request to your backend to update likes
             // Example: PATCH /artworks/:id/like
-            const response = await fetch(`http://localhost:5000/artworks/${data._id}/like`, {
+            const response = await fetch(`http://localhost:3000/artworks/${data._id}/likes`, {
                 method: 'PATCH',
             });
 
@@ -30,7 +30,7 @@ const ArtworkDetails = () => {
         try {
             // Send a request to add artwork to favorites
             // Example: POST /favorites
-            const response = await fetch(`http://localhost:5000/favorites`, {
+            const response = await fetch(`http://localhost:3000/favorites`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ artworkId: data._id }),
