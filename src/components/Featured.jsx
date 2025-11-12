@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Featured = ({ data }) => {
     if (!data) {
@@ -48,9 +49,9 @@ const Featured = ({ data }) => {
                             </p>
                             <p className="text-gray-500 text-sm mb-4">{item.category}</p>
 
-                            <button className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+                            <Link to={`details/${item._id}`} className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
                                 View Details
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}
