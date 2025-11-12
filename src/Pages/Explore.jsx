@@ -81,7 +81,7 @@ const Explore = () => {
                             </p>
                             <p className="text-gray-500 text-sm mb-4">{item.category}</p>
 
-                            <Link to={`details/${item._id}`} className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+                            <Link to={`/details/${item._id}`} className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
                                 View Details
                             </Link>
                         </div>
