@@ -6,10 +6,13 @@ import auth from '../../Utilities/firebase.config';
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [favorite,setFavorite]=useState([])
+    const [loading,setloading]=useState(true)
     const createUser = (email, password) => {
+        setloading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     };
     const signIn = (email, password) => {
+        setloading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = () => {
@@ -26,6 +29,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (current) => {
             setUser(current)
+            setloading(false)
         })
         return () => {
             unsubscribe()
@@ -40,7 +44,9 @@ const AuthProvider = ({ children }) => {
         logOut,
         googleSignIn,
         favorite,
-        setFavorite
+        setFavorite,
+        loading,
+        setloading
 
 
     };

@@ -88,7 +88,7 @@ const Header = () => {
                         {/* Dropdown menu */}
                         <ul className="absolute right-0 mt-2 w-52 rounded-box bg-base-100 p-2 shadow
                            opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                           transition-all duration-300">
+                           transition-all duration-300 z-50">
                             <li className="text-center font-semibold">
                                 {user.displayName || "Unnamed User"}
                             </li>
