@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import AuthContext from "../Contexts/AuthContext/AuthContext";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn,googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -30,9 +30,16 @@ const Login = () => {
     }
   };
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async() => {
     // TODO: Add Google Auth logic (Firebase/Backend)
-    toast("Google Login coming soon!");
+    try{
+      await googleSignIn(),
+      toast.success("Signed In with Google!")
+
+    }
+    catch{
+      toast.error('Could not sign in')
+    }
   };
 
   return (
