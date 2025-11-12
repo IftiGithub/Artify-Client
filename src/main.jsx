@@ -10,6 +10,7 @@ import Home from './Pages/Home.jsx';
 import Error from './Pages/Error.jsx';
 import Explore from './Pages/Explore.jsx';
 import ArtworkDetails from './Pages/ArtworkDetails.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,9 +36,11 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:3000/artworks')
       },
       {
-        path:'details/:id',
-        element:<ArtworkDetails></ArtworkDetails>,
-        loader:({params})=>fetch(`http://localhost:3000/artworks/${params.id}`)
+        path: 'details/:id',
+        element: <PrivateRoute>
+          <ArtworkDetails></ArtworkDetails>
+        </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/artworks/${params.id}`)
 
       }
     ],
