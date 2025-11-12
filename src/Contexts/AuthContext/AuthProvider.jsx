@@ -5,6 +5,7 @@ import auth from '../../Utilities/firebase.config';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [favorite,setFavorite]=useState([])
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -37,7 +38,9 @@ const AuthProvider = ({ children }) => {
         user,
         updateProfile,
         logOut,
-        googleSignIn
+        googleSignIn,
+        favorite,
+        setFavorite
 
 
     };

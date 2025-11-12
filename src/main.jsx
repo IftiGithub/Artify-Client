@@ -13,6 +13,7 @@ import ArtworkDetails from './Pages/ArtworkDetails.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import AddArtwork from './Pages/AddArtwork.jsx';
 import MyGallery from './Pages/MyGallery.jsx';
+import MyFavorites from './Pages/MyFavorites.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,10 +54,20 @@ const router = createBrowserRouter([
 
       },
       {
-        path:'gallery',
-        element:<PrivateRoute>
+        path: 'gallery',
+        element: <PrivateRoute>
           <MyGallery></MyGallery>
         </PrivateRoute>
+      },
+      {
+        path: 'favorites',
+        element: <PrivateRoute>
+          <MyFavorites></MyFavorites>
+        </PrivateRoute>,
+        loader: () => fetch('http://localhost:3000/allartworks')
+
+
+
       }
     ],
   },

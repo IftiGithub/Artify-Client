@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router';
+import AuthContext from '../Contexts/AuthContext/AuthContext';
 
 const ArtworkDetails = () => {
     const data = useLoaderData(); // Artwork data loaded from DB
     const [likes, setLikes] = useState(data.likes || 0);
     const [isFavorite, setIsFavorite] = useState(false);
+    const {favorite,setFavorite}=useContext(AuthContext)
 
     // Handle Like Button
     const handleLike = async () => {
@@ -27,22 +29,9 @@ const ArtworkDetails = () => {
 
     // Handle Add to Favorites
     const handleAddToFavorites = async () => {
-        try {
-            // Send a request to add artwork to favorites
-            // Example: POST /favorites
-            const response = await fetch(`http://localhost:3000/favorites`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ artworkId: data._id }),
-            });
-
-            if (!response.ok) throw new Error('Failed to add to favorites');
-
-            setIsFavorite(true);
-            toast.success('Added to favorites!');
-        } catch (error) {
-            toast.error(error.message);
-        }
+        const updatedFavorites = [...favorite, data._id];
+        setFavorite(updatedFavorites),
+        setIsFavorite(true)
     };
 
     return (
