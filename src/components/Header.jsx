@@ -20,7 +20,7 @@ const Header = () => {
     const navLinks = (
         <>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/explore">Explore Artworks</NavLink></li>
+            <li><NavLink to="explore">Explore Artworks</NavLink></li>
             <li><NavLink to="/add-artwork">Add Artwork</NavLink></li>
             <li><NavLink to="/gallery">My Gallery</NavLink></li>
             <li><NavLink to="/favorites">My Favorites</NavLink></li>
