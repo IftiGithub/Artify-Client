@@ -12,6 +12,7 @@ import Explore from './Pages/Explore.jsx';
 import ArtworkDetails from './Pages/ArtworkDetails.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import AddArtwork from './Pages/AddArtwork.jsx';
+import MyGallery from './Pages/MyGallery.jsx';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
           <AddArtwork></AddArtwork>
         </PrivateRoute>,
 
+      },
+      {
+        path:'gallery',
+        element:<PrivateRoute>
+          <MyGallery></MyGallery>
+        </PrivateRoute>
       }
     ],
   },
