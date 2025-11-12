@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
-import { useNavigate, Link } from "react-router";
+import { useNavigate, Link, useLocation } from "react-router";
 import { toast } from "react-hot-toast";
 import AuthContext from "../Contexts/AuthContext/AuthContext";
 
 const Login = () => {
+  const location =useLocation();
+  const from = location.state.pathname || "/";
   const { signIn,googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,7 +25,7 @@ const Login = () => {
       // Login successful
       toast.success("Login successful!");
       console.log("Logged in user:", userCredential.user);
-      navigate("/"); // Redirect to home
+      navigate(from);
     } catch (error) {
       console.error(error);
       toast.error("Invalid credentials. Please try again."); // Login failed
@@ -35,6 +37,7 @@ const Login = () => {
     try{
       await googleSignIn(),
       toast.success("Signed In with Google!")
+      navigate(from);
 
     }
     catch{
