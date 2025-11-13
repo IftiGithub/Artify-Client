@@ -5,7 +5,7 @@ import AuthContext from "../Contexts/AuthContext/AuthContext";
 
 const Login = () => {
   const location =useLocation();
-  const from = location.state.pathname || "/";
+  const from = location.state?.pathname || "/";
   const { signIn,googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

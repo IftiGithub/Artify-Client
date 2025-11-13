@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import AddArtwork from './Pages/AddArtwork.jsx';
 import MyGallery from './Pages/MyGallery.jsx';
 import MyFavorites from './Pages/MyFavorites.jsx';
+import Loading from './components/Loading.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('http://localhost:3000/artworks')
+        loader: () => fetch('http://localhost:3000/artworks'),
+        hydrateFallbackElement:<Loading></Loading>
       },
       {
         path: "register",
@@ -36,14 +38,16 @@ const router = createBrowserRouter([
       {
         path: 'explore',
         element: <Explore></Explore>,
-        loader: () => fetch('http://localhost:3000/allartworks')
+        loader: () => fetch('http://localhost:3000/allartworks'),
+        hydrateFallbackElement:<Loading></Loading>
       },
       {
         path: 'details/:id',
         element: <PrivateRoute>
           <ArtworkDetails></ArtworkDetails>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/artworks/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:3000/artworks/${params.id}`),
+        hydrateFallbackElement:<Loading></Loading>
 
       },
       {
@@ -64,7 +68,8 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyFavorites></MyFavorites>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:3000/allartworks')
+        loader: () => fetch('http://localhost:3000/allartworks'),
+        hydrateFallbackElement:<Loading></Loading>
 
 
 

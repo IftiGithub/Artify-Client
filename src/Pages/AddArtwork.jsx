@@ -54,83 +54,83 @@ const AddArtwork = () => {
 
             <form onSubmit={handleAddArtwork} className="space-y-4">
                 <div>
-                    <label className="block font-medium mb-1">Image URL</label>
+                    <label className="block font-medium mb-1 text-black">Image URL</label>
                     <input
                         type="url"
                         name="image"
                         required
-                        className="w-full border rounded-md p-2"
+                        className="w-full border rounded-md p-2 text-black"
                         placeholder="Enter image link"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Title</label>
+                    <label className="block font-medium mb-1 text-black">Title</label>
                     <input
                         type="text"
                         name="title"
                         required
-                        className="w-full border rounded-md p-2"
+                        className="w-full border rounded-md p-2 text-black"
                         placeholder="Artwork title"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Category</label>
+                    <label className="block font-medium mb-1 text-black">Category</label>
                     <input
                         type="text"
                         name="category"
                         required
-                        className="w-full border rounded-md p-2"
+                        className="w-full border rounded-md p-2 text-black"
                         placeholder="Nature, Portrait, Abstract..."
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Medium / Tools</label>
+                    <label className="block font-medium mb-1 text-black">Medium / Tools</label>
                     <input
                         type="text"
                         name="medium"
                         required
-                        className="w-full border rounded-md p-2"
+                        className="w-full border rounded-md p-2 text-black"
                         placeholder="Oil on canvas, Photoshop, etc."
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Description</label>
+                    <label className="block font-medium mb-1 text-black">Description</label>
                     <textarea
                         name="description"
                         required
-                        className="w-full border rounded-md p-2 h-24"
+                        className="w-full border rounded-md p-2 h-24 text-black"
                         placeholder="Describe your artwork..."
                     ></textarea>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block font-medium mb-1">Dimensions (optional)</label>
+                        <label className="block font-medium mb-1 text-black">Dimensions (optional)</label>
                         <input
                             type="text"
                             name="dimensions"
-                            className="w-full border rounded-md p-2"
+                            className="w-full border rounded-md p-2 text-black"
                             placeholder="e.g., 24 x 36 inches"
                         />
                     </div>
                     <div>
-                        <label className="block font-medium mb-1">Price (optional)</label>
+                        <label className="block font-medium mb-1 text-black">Price (optional)</label>
                         <input
                             type="number"
                             name="price"
-                            className="w-full border rounded-md p-2"
+                            className="w-full border rounded-md p-2 text-black"
                             placeholder="Enter price"
                         />
                     </div>
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Visibility</label>
-                    <select name="visibility" required className="w-full border rounded-md p-2">
+                    <label className="block font-medium mb-1 text-black">Visibility</label>
+                    <select name="visibility" required className="w-full border rounded-md p-2 text-black">
                         <option value="Public">Public</option>
                         <option value="Private">Private</option>
                     </select>
@@ -138,21 +138,21 @@ const AddArtwork = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block font-medium mb-1">User Name</label>
+                        <label className="block font-medium mb-1 text-black">User Name</label>
                         <input
                             type="text"
                             value={user?.displayName || ""}
                             readOnly
-                            className="w-full border rounded-md p-2 bg-gray-100"
+                            className="w-full border rounded-md p-2 bg-gray-100 text-black"
                         />
                     </div>
                     <div>
-                        <label className="block font-medium mb-1">User Email</label>
+                        <label className="block font-medium mb-1 text-black">User Email</label>
                         <input
                             type="email"
                             value={user?.email || ""}
                             readOnly
-                            className="w-full border rounded-md p-2 bg-gray-100"
+                            className="w-full border rounded-md p-2 bg-gray-100 text-black"
                         />
                     </div>
                 </div>

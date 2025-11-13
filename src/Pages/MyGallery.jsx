@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../Contexts/AuthContext/AuthContext";
 import toast from "react-hot-toast";
-//https://i.postimg.cc/ZKzvxFqj/whisper.jpg
-
 const MyGallery = () => {
     const { user } = useContext(AuthContext);
     const [artworks, setArtworks] = useState([]);
-    const [selectedArtwork, setSelectedArtwork] = useState(null); // for update modal
+    const [selectedArtwork, setSelectedArtwork] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [newImage, setNewImage] = useState(""); // for storing selected image (URL or file)
 
     useEffect(() => {
         if (!user || !user.email) return;
@@ -27,7 +26,6 @@ const MyGallery = () => {
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
     }, [user]);
-
 
     // ✅ Delete handler
     const handleDelete = async (id) => {
@@ -51,10 +49,12 @@ const MyGallery = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         const form = e.target;
+
         const updatedArtwork = {
             title: form.title.value,
             category: form.category.value,
             description: form.description.value,
+            image: newImage || selectedArtwork.image, // Use new image if provided
         };
 
         const res = await fetch(`http://localhost:3000/my-artworks/${selectedArtwork._id}`, {
@@ -66,13 +66,13 @@ const MyGallery = () => {
         const result = await res.json();
         if (result.success) {
             toast.success("Artwork updated successfully!");
-            // Update local state instantly
             setArtworks(
                 artworks.map((item) =>
                     item._id === selectedArtwork._id ? { ...item, ...updatedArtwork } : item
                 )
             );
-            setSelectedArtwork(null); // close modal
+            setSelectedArtwork(null);
+            setNewImage("");
         } else {
             toast.error("Failed to update artwork.");
         }
@@ -88,9 +88,7 @@ const MyGallery = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
-                My Gallery
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-8">My Gallery</h2>
 
             {artworks.length === 0 ? (
                 <p className="text-center text-gray-500">You haven’t added any artworks yet.</p>
@@ -105,7 +103,10 @@ const MyGallery = () => {
 
                                 <div className="mt-4 flex justify-center gap-2">
                                     <button
-                                        onClick={() => setSelectedArtwork(item)}
+                                        onClick={() => {
+                                            setSelectedArtwork(item);
+                                            setNewImage("");
+                                        }}
                                         className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600"
                                     >
                                         Update
@@ -125,7 +126,7 @@ const MyGallery = () => {
 
             {/* Update Modal */}
             {selectedArtwork && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
                     <form
                         onSubmit={handleUpdate}
                         className="bg-white p-6 rounded-xl shadow-lg w-96"
@@ -152,6 +153,25 @@ const MyGallery = () => {
                             placeholder="Description"
                             className="w-full mb-3 p-2 border rounded"
                         ></textarea>
+
+                        {/* Image update field */}
+                        <label className="block text-sm font-medium mb-2 text-gray-700">
+                            Update Image:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Paste new image URL"
+                            className="w-full mb-3 p-2 border rounded"
+                            onChange={(e) => setNewImage(e.target.value)}
+                        />
+
+                        <div className="flex justify-center mb-3">
+                            <img
+                                src={newImage || selectedArtwork.image}
+                                alt="Preview"
+                                className="w-40 h-32 object-cover rounded"
+                            />
+                        </div>
 
                         <div className="flex justify-between">
                             <button

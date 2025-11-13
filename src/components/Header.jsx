@@ -1,11 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import AuthContext from "../Contexts/AuthContext/AuthContext";
 import '../App.css'
 import toast from "react-hot-toast";
-
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    useEffect(()=>{
+        const savedTheme=localStorage.getItem('theme')
+        const html=document.querySelector('html')
+        if(savedTheme==='dark'){
+            html.setAttribute('data-theme','dark')
+        }
+        else{
+            html.setAttribute('data-theme','light')
+        }
+    },[])
+    const handleTheme = (checked) => {
+        const html = document.querySelector('html')
+        if (checked) {
+            html.setAttribute('data-theme', 'dark')
+            localStorage.setItem('theme','dark')
+        }
+        else {
+            html.setAttribute('data-theme', 'light')
+            localStorage.setItem('theme','light')
+        }
+    }
 
     const handleLogout = async () => {
         try {
@@ -91,6 +111,14 @@ const Header = () => {
                            transition-all duration-300 z-50">
                             <li className="text-center font-semibold">
                                 {user.displayName || "Unnamed User"}
+                            </li>
+                            <li>
+                                <label>Change Theme:</label><br></br>
+                                <input onChange={(e) =>
+                                    handleTheme(e.target.checked)
+                                }
+                                defaultChecked={localStorage.getItem('theme')==='dark'}
+                                type="checkbox" className="toggle" />
                             </li>
                             <li>
                                 <button
