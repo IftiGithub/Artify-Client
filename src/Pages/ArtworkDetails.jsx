@@ -14,7 +14,7 @@ const ArtworkDetails = () => {
         try {
             // Send a request to your backend to update likes
             // Example: PATCH /artworks/:id/like
-            const response = await fetch(`http://localhost:3000/artworks/${data._id}/likes`, {
+            const response = await fetch(`https://artify-server-chi.vercel.app/artworks/${data._id}/likes`, {
                 method: 'PATCH',
             });
 

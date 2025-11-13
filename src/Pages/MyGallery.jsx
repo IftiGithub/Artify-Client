@@ -13,7 +13,7 @@ const MyGallery = () => {
 
         setLoading(true);
 
-        fetch("http://localhost:3000/my-artworks", {
+        fetch("https://artify-server-chi.vercel.app/my-artworks", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: user.email }),
@@ -32,7 +32,7 @@ const MyGallery = () => {
         const confirmDelete = window.confirm("Are you sure you want to delete this artwork?");
         if (!confirmDelete) return;
 
-        const res = await fetch(`http://localhost:3000/my-artworks/${id}`, {
+        const res = await fetch(`https://artify-server-chi.vercel.app/my-artworks/${id}`, {
             method: "DELETE",
         });
 
@@ -57,7 +57,7 @@ const MyGallery = () => {
             image: newImage || selectedArtwork.image, // Use new image if provided
         };
 
-        const res = await fetch(`http://localhost:3000/my-artworks/${selectedArtwork._id}`, {
+        const res = await fetch(`https://artify-server-chi.vercel.app/my-artworks/${selectedArtwork._id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedArtwork),

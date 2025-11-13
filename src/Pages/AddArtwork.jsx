@@ -26,7 +26,7 @@ const AddArtwork = () => {
         };
 
         try {
-            const res = await fetch("http://localhost:3000/artworks", {
+            const res = await fetch("https://artify-server-chi.vercel.app/artworks", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(artworkData),

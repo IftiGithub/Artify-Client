@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import AuthContext from "../Contexts/AuthContext/AuthContext";
 
 const Register = () => {
-    const { createUser, updateProfile,googleSignIn } = useContext(AuthContext); // ✅ FIXED
+    const { createUser, updateProfile, googleSignIn } = useContext(AuthContext); // ✅ FIXED
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
@@ -56,10 +56,11 @@ const Register = () => {
 
 
     const handleGoogleSignup = async () => {
-        try{
+        try {
             await googleSignIn(),
             toast.success('Successfully Signed UP with Google')
-        }catch{
+            navigate("/"); // redirect to home
+        } catch {
             toast.error("Couldn't Sign Up.")
         }
     };

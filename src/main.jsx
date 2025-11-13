@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('http://localhost:3000/artworks'),
+        loader: () => fetch('https://artify-server-chi.vercel.app/artworks'),
         hydrateFallbackElement:<Loading></Loading>
       },
       {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: 'explore',
         element: <Explore></Explore>,
-        loader: () => fetch('http://localhost:3000/allartworks'),
+        loader: () => fetch('https://artify-server-chi.vercel.app/allartworks'),
         hydrateFallbackElement:<Loading></Loading>
       },
       {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <ArtworkDetails></ArtworkDetails>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/artworks/${params.id}`),
+        loader: ({ params }) => fetch(`https://artify-server-chi.vercel.app/artworks/${params.id}`),
         hydrateFallbackElement:<Loading></Loading>
 
       },
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyFavorites></MyFavorites>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:3000/allartworks'),
+        loader: () => fetch('https://artify-server-chi.vercel.app/allartworks'),
         hydrateFallbackElement:<Loading></Loading>
 
 
