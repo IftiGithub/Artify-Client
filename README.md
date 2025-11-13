@@ -1,16 +1,45 @@
-# React + Vite
+# 🎨 Artify Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Artify is a creative web platform built with React, providing users with authentication, personalized favorites, and a modern responsive UI.  
+This is the **client-side** of the project.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔐 **Authentication**
+  - Email & Password login/signup (Firebase Auth)
+  - Google Sign-In integration
+  - Protected routes for logged-in users
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ❤️ **User Favorites**
+  - Add or remove items from your favorites list
+  - Favorites stored per user
 
-## Expanding the ESLint configuration
+- 🌗 **Dark/Light Mode**
+  - User can toggle theme
+  - Theme preference saved in localStorage and persists on reload
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧭 **Routing**
+  - Private routes for authenticated users only
+  - Error pages and loaders for better UX
+  - React Router v6 used for navigation
+
+- 🧩 **State Management**
+  - React Context API for authentication and global state
+  - Custom AuthProvider and AuthContext setup
+
+- 📱 **Responsive Design**
+  - Fully responsive layout for mobile, tablet, and desktop
+  - Modern UI built with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** (Vite)
+- **React Router v6**
+- **Firebase Authentication**
+- **Tailwind CSS**
+- **React Hot Toast** (for notifications)
+- **Context API** for state management
