@@ -46,7 +46,7 @@ const ArtworkDetails = () => {
                     />
 
                     <div className="mt-4">
-                        <h2 className="text-3xl font-bold text-gray-800 mb-2">{data.title}</h2>
+                        <h2 className="text-3xl font-bold text-gray-600 mb-2">{data.title}</h2>
                         <p className="text-gray-600 mb-1">
                             <strong>Artist:</strong> {data.user_name}
                         </p>

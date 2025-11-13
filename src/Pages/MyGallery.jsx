@@ -98,7 +98,7 @@ const MyGallery = () => {
                         <div key={item._id} className="bg-white shadow-md rounded-xl overflow-hidden">
                             <img src={item.image} alt={item.title} className="h-56 w-full object-cover" />
                             <div className="p-4 text-center">
-                                <h3 className="text-lg font-semibold">{item.title}</h3>
+                                <h3 className="text-lg font-semibold text-black">{item.title}</h3>
                                 <p className="text-sm text-gray-600">{item.category}</p>
 
                                 <div className="mt-4 flex justify-center gap-2">
